@@ -1,0 +1,4 @@
+include dailyUpdates/schema.sql
+graft dailyUpdates/static
+graft dailyUpdates/templates
+global-exclude *.pyc

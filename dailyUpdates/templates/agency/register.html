@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block header %}
+<h1>{% block title %} Register Your Favorite News Agency {% endblock %}</h1>
+
+<form method="post">
+  <label for="agency"> News Agency </label>
+  <input name="agency" id="agency" required />
+  <label for="url"> News Website Link </label>
+  <input name="url" id="url" required />
+  <input type="submit" value="Register" />
+</form>
+{% endblock %}
