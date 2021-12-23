@@ -168,20 +168,34 @@ def populateDB(titles: List[str], urls: List[str], agencyURL: str) -> None:
                 "INSERT INTO news (headline, url, agency_id) VALUES (?, ?, ?) ", (
                     link[0], link[1], id,)
             )
+            print(id, link[1])
             db.commit()
-    elif id == 1:
+    elif id == 2:
         for link in zip(titles, urls):
-            link[1].replace("/news", "")
+            # fullLink is the combining the new agency url with the url scrape from the site.
+            fullLink = f"{agencyURL}{link[1]}"
             db.execute(
                 "INSERT INTO news (headline, url, agency_id) VALUES (?, ?, ?) ", (
-                    link[0], link[1], id,)
+                    link[0], fullLink, id,)
             )
+            print(id, fullLink)
             db.commit()
-    for link in zip(titles, urls):
-        # fullLink is the combining the new agency url with the url scrape from the site.
-        fullLink = f"{agencyURL}{link[1]}"
-        db.execute(
-            "INSERT INTO news (headline, url, agency_id) VALUES (?, ?, ?) ", (
-                link[0], fullLink, id,)
-        )
-        db.commit()
+    else:
+        for link in zip(titles, urls):
+            if link[1] is not None:
+                cleaned = link[1].replace("/news", "")
+                fullLink = f"{agencyURL}{cleaned}"
+                db.execute(
+                    "INSERT INTO news (headline, url, agency_id) VALUES (?, ?, ?) ", (
+                        link[0], fullLink, id,)
+                )
+                print(id, fullLink)
+                db.commit()
+
+
+bbc = BBCnews()
+bbc.getNews("business")
+# cnn = CNNnews()
+# cnn.getNews("business")
+# finviz = FinvizNews()
+# finviz.finvizDaily()
