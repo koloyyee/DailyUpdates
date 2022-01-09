@@ -1,14 +1,19 @@
 import os
 
+from dotenv import load_dotenv
 from flask import Flask, current_app
 
 from . import db
 
+load_dotenv()
+
 
 def create_app(test_config=None):
-    app = Flask(__name__, instance_relative_config=True)
+    app = Flask(__name__,
+                instance_relative_config=True,
+                )
     app.config.from_mapping(
-        SECRET_KEY="dev",
+        SECRET_KEY=os.getenv("SECRET_KEY"),
         DATABASE=os.path.join(app.instance_path, "dailyUpdates.sqlite"),
 
     )
@@ -38,4 +43,9 @@ def create_app(test_config=None):
     from . import agency
     app.register_blueprint(agency.bp)
 
+    from . import blog
+    app.register_blueprint(blog.bp)
+
+    from . import about
+    app.register_blueprint(about.bp)
     return app

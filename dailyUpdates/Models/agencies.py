@@ -9,7 +9,7 @@ from flask import abort
 
 class AgencyModel():
     # Create
-    def registerAgency(agency: str, url: str) -> None:
+    def registerAgency(self, agency: str, url: str) -> None:
         """
         :param - agency :str, name of the news agency
         :param - url: str, link to the news page, not including which category.

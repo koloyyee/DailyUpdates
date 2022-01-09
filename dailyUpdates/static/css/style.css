@@ -1,13 +1,14 @@
-html{
-    font-family:monospace;
-    margin: 10vw;
+body{
+    font-family:"Gill Sans", sans-serif;;
+    font-size: 1rem;
+    margin:10vw;
     color:dimgray;
 
 }
 
 title{
-    font-weight: 1000;
-    font-size: 2vh;
+    font-weight: 500;
+    font-size: 5vh;
     display:contents;
 }
 
@@ -22,4 +23,29 @@ a{
 }
 a:hover {
     color: pink;
+    transition: 0.3s; 
+    
+}
+
+a.back {
+    position: fixed;
+    bottom: 10%;
+    width: 100%;
+}
+
+a#news:hover{
+    color:chartreuse;
+    text-shadow:0.5px 0.5px 0 #000;
+      
+}
+
+a#blog:hover{
+    color:rgb(78, 136, 243);
+    text-shadow:0.5px 0.5px 0 #000;
+
+}
+
+a#hi:hover{
+    color: gold;
+    text-shadow:0.5px 0.5px 0 #000;
 }

@@ -17,7 +17,7 @@ def cnn(categories: list[str]) -> None:
 
 @app.task
 def bbc(categories: list[str]) -> None:
-    print(f"fetching BBC")
+    print(f"fetching BBC {categories}")
     bbc = scrape.BBCnews()
     for c in categories:
         bbc.getNews(c)

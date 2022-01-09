@@ -24,4 +24,5 @@ TODO list
 - [x] populate agency data
 - [ ] write test
 - [ ] In the agency form, include which category does the user want to fetch if there are any.
-- [ ]
+- [ ] add register button
+- [ ] clean last "/" before inserting into db

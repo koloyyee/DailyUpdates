@@ -55,4 +55,4 @@ if __name__ == "__main__":
 # rabbitmq-server -detached
 
 # stop a node
-# rabbitmq-server stop
+# rabbitmqctl stop

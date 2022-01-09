@@ -1,9 +1,11 @@
-{% extends "base.html" %} {% block header %}
-<h1>{% block title %}Your Agencies {% endblock %}</h1>
+{% extends "base.html" %} 
+{% block header %} <h3>agencies. </h3>{% endblock %}
+{% block content %}
 {% for a in agencies %}
-<p>{{ a["agency"] }}</p>
-<a class = "action" href="{{ url_for('agency.update', id=a["id"])  }}"> Edit</a>
+
+<div><scan> <a class = "action" href = {{ url_for("dailyNews.agencyNews", agency = a["agency"]) }}> {{ a["agency"].capitalize() }} </a> </scan>
+<a class = "action" href="{{ url_for('agency.update', id=a["id"])  }}"> <small> edit </small> </a>
+</div>
 </br>
-<a class = "action" href = {{ url_for("dailyNews.agencyNews", agency = a["agency"]) }}> {{ a["agency"] }} daily news </a>
 
 {% endfor %} {% endblock %}

@@ -32,8 +32,8 @@ def register():
                 #     "INSERT INTO agency (agency, url) VALUES (?, ?)", (agency, url)
                 # )
                 # db.commit()
-                agency = AgencyModel()
-                agency.registerAgency(agency, url)
+                agencyModel = AgencyModel()
+                agencyModel.registerAgency(agency, url)
 
             except db.IntegrityError:
                 error = f"News Agency {agency} is already registered"
