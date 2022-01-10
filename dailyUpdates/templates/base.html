@@ -29,6 +29,7 @@
 
       </p> </a>
       
+      
     <section class="content">
       <header>{% block header %} {% endblock %}</header>
 
@@ -53,6 +54,12 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" id="hi" href="{{ url_for("about.hi") }}">hi</a>
+            </li>
+            <li>
+              <a class="social" href ="https://www.github.com/koloyyee" target="_blank"><img src= "{{ url_for("static", filename="GitHub-Mark-64px.png" ) }}" alt="my repo" width="24" height="24"> </a>
+            </li>
+            <li>
+              <a class="social" href ="https://www.linkedin.com/in/ko-loy-yee/" target="_blank"><img src= "{{ url_for("static", filename="LI-In-Bug.png" ) }}" alt="my linkedin" width="28" height="24"></a>
             </li>
           </ul>
         </div>

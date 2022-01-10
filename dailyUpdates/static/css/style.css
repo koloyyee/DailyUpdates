@@ -49,3 +49,11 @@ a#hi:hover{
     color: gold;
     text-shadow:0.5px 0.5px 0 #000;
 }
+
+a.social{
+    margin: 0.5vw;
+}
+
+a.social:hover {
+    text-shadow: #FC0 1px 0 10px;
+}
