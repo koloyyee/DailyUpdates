@@ -15,6 +15,7 @@ Currently, it allows us to fetch news from BBC, CNN, and Finviz, and show the to
 ## Future
 More flexbility on which news agency, the website or even a login system.
 
+if you woud like to try on your own you can folk it then 
 ```
 # after downloading, create virutal env
 cd DailyUpdates
