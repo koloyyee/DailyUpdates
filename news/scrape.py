@@ -2,7 +2,7 @@
 Scraping BBC, CNN, and Finviz business news
 
 """
-import json
+import os
 from datetime import date
 from typing import List, Tuple
 
@@ -144,6 +144,7 @@ def getAgency(url: str) -> int:
 
     """
     db = getDB()
+    print(os.path.dirname(os.path.abspath(__file__)))
     id = db.execute(
         "SELECT id, agency, url FROM agency WHERE url = ? ", (url,)
     ).fetchone()
@@ -187,7 +188,3 @@ def populateDB(titles: List[str], urls: List[str], agencyURL: str) -> None:
                         link[0], fullLink, id,)
                 )
                 db.commit()
-
-
-news = CNNnews()
-news.getNews("business")

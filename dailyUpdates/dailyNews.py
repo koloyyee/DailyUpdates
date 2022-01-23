@@ -43,7 +43,7 @@ def jsonTest():
     return jsonify(data)
 
 
-@bp.route("/<agency>")
+@bp.route("/<string:agency>")
 def agencyNews(agency: str):
     newsModel = NewsModel()
     news = newsModel.allNewsByAgency(agency.strip().lower())
