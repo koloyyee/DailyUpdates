@@ -57,3 +57,7 @@ a.social{
 a.social:hover {
     text-shadow: #FC0 1px 0 10px;
 }
+.post{
+    margin-left: 10vw;
+    margin-right: 10vw;
+}

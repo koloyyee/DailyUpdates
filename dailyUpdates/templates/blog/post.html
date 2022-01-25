@@ -1,11 +1,17 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block content %}
 
 <h1>{% block header %}{% endblock %}{{ blogTitle.capitalize() }}</h1>
 
 <p>published on: {{ blogDate }}</p>
 
-<div>{{ blogContent | safe }}</div>
-
+<div class="post">
+    {{ blogContent | safe }} 
+    
+    
+</div>
 <a class = "back" href =" {{ url_for("blog.allPostsTitle") }} "> back </a>
 
 {% endblock %}
+
