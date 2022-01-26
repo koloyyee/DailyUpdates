@@ -12,6 +12,7 @@ def create_app(test_config=None):
     app = Flask(__name__,
                 instance_relative_config=True,
                 )
+    app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config.from_mapping(
         SECRET_KEY=os.getenv("SECRET_KEY"),
         DATABASE=os.path.join(app.instance_path, "dailyUpdates.sqlite"),
