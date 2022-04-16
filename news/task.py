@@ -21,7 +21,8 @@ def allNews(agencyUrl: list[str], category: list[str] = None) -> None:
 
         if agency == "https://finviz.com" or agency == "https://www.reuters.com":
             news.fetchNews()
-        for c in category:
-            print(f"fetching {agency} - {c}")
-            news.fetchNews(c)
+        else:
+            for c in category:
+                print(f"fetching {agency} - {c}")
+                news.fetchNews(c)
         news.fetchNews()
