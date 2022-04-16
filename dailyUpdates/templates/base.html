@@ -7,16 +7,22 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <a href = " {{ url_for("dailyNews.mySubscriptions") }} "><title>{% block title %}{% endblock%} News Hub</title> </a>
+    <a href = " {{ url_for("dailyNews.mySubscriptions") }} "><title>{% block title %}{% endblock%} read, write, cook</title> </a>
+
+  <br/>
+  <br/>
+
+  
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--  <link rel="stylesheet" href="{{ url_for("static", filename = "js/node_modules/bootstrap/dist/css/bootstrap.css")}}" /> 
-    <link rel="stylesheet" href="{{ url_for("static", filename = "js/node_modules/bootstrap/dist/css/bootstrap.min.css")}}" /> -->
+  <!-- <script src="https://cdn.ckeditor.com/ckeditor5/33.0.0/classic/ckeditor.js"></script> -->
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{{ url_for("static", filename = "css/style.css")}}" /> 
     <link rel="icon" href="{{ url_for("static", filename = "chicken-leg.png") }}"/> 
+
+
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -25,25 +31,21 @@
         <a href="#">upgrade your browser</a> to improve your experience.
       </p>
     <![endif]-->
-   
-    <a href = "{{ url_for("agency.show") }}"> <p> My 
-      Subscriptions  
-       <!-- <scan> <a href = "{{ url_for("agency.register") }}"> - add new agency</a> <scan> -->
 
-      </p> </a>
-      
       
     <section class="content">
       <header>{% block header %} {% endblock %}</header>
-
+      <div class="newsSub"></div>
       {% for m in get_flashed_messages() %}
       <div class="flash">{{ m }}</div>
       {% endfor %} {% block content %} {% endblock %}
     </section>
+   
+
     
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
-      <div class="container-fluid  ">
+      <div class="container-fluid">
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -51,18 +53,24 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent" > 
           <div class="navbar-nav">
               <a class="nav-link" id ="news" aria-current="page" href="{{ url_for("dailyNews.mySubscriptions") }}">news</a>
-              <a class="nav-link" id="blog" href="{{ url_for("blog.allPostsTitle") }}" >blog</a>
+              <a class="nav-link" id="blog" href="{{ url_for("blog.BlogPostsTitle") }}" >blog</a>
               <a class="nav-link" id="hi" href="{{ url_for("about.hi") }}">hi</a>
               <a class="nav-link social" href ="https://www.github.com/koloyyee" target="_blank"><img src= "{{ url_for("static", filename="GitHub-Mark-64px.png" ) }}" alt="my repo" width="24" height="24"> </a>
               <a class="nav-link social" href ="https://www.linkedin.com/in/ko-loy-yee/" target="_blank"><img src= "{{ url_for("static", filename="LI-In-Bug.png" ) }}" alt="my linkedin" width="28" height="24"></a>
+              
           </div>
         </div>
       </div>
+      {% if not g.user %}
+    
+      <a href={{ url_for("auth.login")}} > login </a>
+    {% else %}
+    <a href={{ url_for("auth.logout")}} > logout </a>
+    {% endif %}
     </nav>
   </body>
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-  <script type="module" src="{{ url_for("static", filename = "js/index.js")}}"> </script>
-  
+  <script type="module" src="{{ url_for("static", filename = "js/index.js")}}"> </script> 
 </html>

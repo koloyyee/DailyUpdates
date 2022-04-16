@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %} {{ ckeditor.load() }}
+
+<form id="editorDiv" name="ckeditor" method="POST" action="/create">
+  <div>
+    <p>Title: <br />{{ form.title }}</p>
+    <p>Content: <br />{{ form.content }}</p>
+  </div>
+  <input type="submit" value="post" />
+</form>
+
+{{ ckeditor.load() }} {{ ckeditor.config(name='content') }} {% endblock %}

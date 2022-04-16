@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>register</h1>
+<small>
+  or 
+  <a href={{ url_for("auth.login")}} > login </a>
+  
+
+  <form method="POST">
+    <label for="username"> Username</label>
+    {{ form.username }}
+    <br />
+    <label for="password"> Password</label>
+    {{ form.password }}
+    <br />
+    <input type="submit" value="register" />
+    <form />
+
+    {% endblock %}
+  </form></small
+>

@@ -18,3 +18,6 @@ build/
 *.dump
 celerybeat-schedule
 nlp
+
+Models/auth.py
+Models/blog.py

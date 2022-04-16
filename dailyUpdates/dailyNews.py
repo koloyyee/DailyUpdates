@@ -10,19 +10,10 @@ from dailyUpdates.Models.news import NewsModel
 
 # from scrapeNews import BBCnews, CNNnews, FinvizNews
 
-bp = Blueprint("dailyNews", __name__)
-
+# bp = Blueprint("dailyNews", __name__)
+bp = Blueprint("dailyNews",  __name__, url_prefix="/news")
 # retrieve all
 
-
-# def allNews():
-#     newsModel = NewsModel()
-#     news = newsModel.allNews()
-#     allNewsKey = ["headline", "url", "agency"]
-#     data = []
-#     for n in news:
-#         data.append(dict(zip(allNewsKey, n)))
-#     return render_template("news/index.html", allNews=data)
 
 @bp.route("/")
 def mySubscriptions():

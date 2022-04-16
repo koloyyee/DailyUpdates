@@ -11,6 +11,53 @@ from bs4 import BeautifulSoup
 from dailyUpdates import create_app
 from dailyUpdates.db import getDB, initDB
 from flask import abort
+from pydantic import UrlUserInfoError
+
+
+class AgencyNews():
+    def __init__(self, url: str) -> None:
+        self.url = url
+
+    def fetchNews(self, category: str = None):
+        http = urllib3.PoolManager()
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (HTML, like Gecko) Version/13.1.1 Safari/604.1'}
+
+        if category:
+            r = http.request("GET", f"{self.url}/{category}")
+        elif category == None and self.url in "http://www.finviz.com":
+            r = http.request("GET", f"{self.url}/news.ashx")
+        else:
+            r = http.request("GET", f"{self.url}")
+            feature = "lxml"
+        feature = "html.parser"
+        parsed = BeautifulSoup(r.data, feature)
+
+        if self.url == "https://www.bbc.com/news":  # BBC
+            headlines = parsed.find_all(class_="gs-c-promo-heading")[1:-12]
+        elif self.url in "https://edition.cnn.com":  # CNN
+            headlines = parsed.find_all(class_="cd__headline")
+        elif self.url in "https://finviz.com":  # finviz
+            headlines = parsed.find_all(class_="news-link-container")
+        else:  # Reuters
+            headlines = parsed.find_all(class_="heading_5_half")
+
+        titles, urls = self.getHeadlines(headlines)
+
+        app = create_app()
+
+        with app.app_context():
+            populateDB(titles, urls, self.url)
+
+    def getHeadlines(self, headlines: list[str]):
+        titles = []
+        urls = []
+        for h in headlines:
+            titles.append(h.get_text())
+            if self.url == "https://edition.cnn.com":
+                urls.append(h.a.get("href"))
+            urls.append(h.get("href"))
+        return titles, urls
 
 
 class BBCnews():
@@ -132,7 +179,35 @@ class FinvizNews():
         for h in headlines[1:]:
             titles.append(h.get_text())
             urls.append(h.get("href"))
-        return titles, urls
+        return (titles, urls)
+
+
+class Reuters():
+    REUTERS = "https://www.reuters.com"
+
+    def reutersNews(self):
+        http = urllib3.PoolManager()
+
+        app = create_app()
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 13_5_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/604.1'}
+
+        r = http.request("GET", self.REUTERS, headers=headers)
+        parsed = BeautifulSoup(r.data, "lxml")
+
+        headlines = parsed.find_all(class_="heading_5_half")
+        titles, urls = self.reutersHeadlines(headlines=headlines)
+
+        with app.app_context():
+            populateDB(titles, urls, self.REUTERS)
+
+    def reutersHeadlines(self, headlines: list[str]) -> Tuple[List[str], List[str]]:
+        titles = []
+        urls = []
+        for h in headlines:
+            titles.append(h.get_text())
+            urls.append(h.get("href"))
+        return (titles, urls)
 
 
 def getAgency(url: str) -> int:

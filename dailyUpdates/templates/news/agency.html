@@ -1,8 +1,14 @@
 {% extends "base.html" %} {% block header %}
-<h1 class="agencyTitle">Daily News from {{ allNews[0]["agency"] }}</h1>
-{% for news in allNews %} 
-<a href="{{ news["url"]}}" target="_blank"> <p> {{ news["headline"] }} </p> </a>
+<h1 class="agencyTitle">daily news from {{ allNews[0]["agency"].upper() }}</h1>
+    
+<br/>
 
-{% block content %}
+{% for news in allNews %} 
+    <a href="{{ news["url"]}}" target="_blank"> <p> {{ news["headline"] }} </p> </a>
+    
+    {% block content %}
+    {% endblock %}
+    {% endfor %} 
+
+
 {% endblock %}
-{% endfor %} {% endblock %}

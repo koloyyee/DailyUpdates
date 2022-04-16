@@ -62,3 +62,20 @@ a.social:hover {
     margin-right: 10vw;
     padding-bottom: 10vw;
 }
+
+#about {
+    margin-right: 50%;
+    line-height: 1.8;
+}
+
+.navbar {
+    padding-right: 8vw;
+    padding-left: 8vw;
+}
+
+#profile_pic {
+    float: right;
+    border-radius: 50%;
+    opacity: 100%;
+    margin-right: 3vw;
+}

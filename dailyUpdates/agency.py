@@ -6,6 +6,34 @@ from dailyUpdates.Models.agencies import AgencyModel
 
 bp = Blueprint("agency", __name__, url_prefix="/agency")
 
+
+def agency(id):
+    # agency = getDB().execute(
+    #     "SELECT id, agency, url FROM agency WHERE id = ?", (id,)
+    # ).fetchone()
+    agencyModel = AgencyModel
+    agency = agencyModel.getAgency(id)
+
+    if agency is None:
+        abort(404, f"Agency doesn't exist")
+    return agency
+
+
+# retrieve
+
+
+@bp.route("/")
+def show():
+    """
+    Show all agencies the user has registered with the related url.
+    """
+    # agencies = db.execute(
+    #     "SELECT id, agency, url from agency"
+    # ).fetchall()
+    agencyModel = AgencyModel()
+    agencies = agencyModel.getAllAgencies()
+    return render_template("agency/index.html", agencies=agencies)
+
 # create
 
 
@@ -42,31 +70,6 @@ def register():
 
         flash(error)
     return render_template("agency/register.html")
-
-
-@bp.route("/")
-def show():
-    """
-    Show all agencies the user has registered with the related url.
-    """
-    # agencies = db.execute(
-    #     "SELECT id, agency, url from agency"
-    # ).fetchall()
-    agencyModel = AgencyModel()
-    agencies = agencyModel.getAllAgencies()
-    return render_template("agency/index.html", agencies=agencies)
-
-
-def agency(id):
-    # agency = getDB().execute(
-    #     "SELECT id, agency, url FROM agency WHERE id = ?", (id,)
-    # ).fetchone()
-    agencyModel = AgencyModel
-    agency = agencyModel.getAgency(id)
-
-    if agency is None:
-        abort(404, f"Agency doesn't exist")
-    return agency
 
 
 @bp.route("/<int:id>/update", methods=("GET", "POST"))

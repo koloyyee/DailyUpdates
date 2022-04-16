@@ -4,29 +4,24 @@ from celery.schedules import crontab
 from . import scrape
 from .celery import app
 
-
 # how to schedule tasks with celery beat_schedule
 # next we will set up schedule to fetch or scrape news from CNN, BBC, and Finviz.
-@app.task
-def cnn(categories: list[str]) -> None:
-    print(f"fetching CNN {categories}.")
-    cnn = scrape.CNNnews()
-    for c in categories:
-        cnn.getNews(c)
 
 
 @app.task
-def bbc(categories: list[str]) -> None:
-    print(f"fetching BBC {categories}")
-    bbc = scrape.BBCnews()
-    for c in categories:
-        bbc.getNews(c)
+def allNews(agencyUrl: list[str], category: list[str] = None) -> None:
+    """
+    :params: agencyUrl - list of url of the new agency to be scraped.
+    :params: category - category of news to be scrape, default = None.
+    :return: None, values will be inserted into the db directly.
+    """
+    for agency in agencyUrl:
+        print(f"fetching news from {agency} - {category}")
+        news = scrape.AgencyNews(agency)
 
-
-@app.task
-def finviz(ticker: str = None) -> None:
-    print(f"fetching finviz news")
-    finviz = scrape.FinvizNews()
-    if ticker is True:
-        finviz.finvizTickerNews(ticker)
-    finviz.finvizDaily()
+        if agency == "https://finviz.com" or agency == "https://www.reuters.com":
+            news.fetchNews()
+        for c in category:
+            print(f"fetching {agency} - {c}")
+            news.fetchNews(c)
+        news.fetchNews()

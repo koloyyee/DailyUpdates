@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from flask import Flask, current_app
+from flask_ckeditor import CKEditor
 
 from . import db
 
@@ -12,6 +13,8 @@ def create_app(test_config=None):
     app = Flask(__name__,
                 instance_relative_config=True,
                 )
+    ckeditor = CKEditor(app)
+
     app.config['TEMPLATES_AUTO_RELOAD'] = True
     app.config.from_mapping(
         SECRET_KEY=os.getenv("SECRET_KEY"),
@@ -37,16 +40,26 @@ def create_app(test_config=None):
     with app.app_context():
         db.initApp(app)
 
+    # ckeditor.init_app(app)
+
+    # from flask_login import LoginManager
+    # login_manager = LoginManager()
+    # login_manager.init_app(app)
+
+    from . import auth
+    app.register_blueprint(auth.bp)
+
     from . import dailyNews
     app.register_blueprint(dailyNews.bp)
-    app.add_url_rule("/", endpoint="index")
 
     from . import agency
     app.register_blueprint(agency.bp)
 
     from . import blog
-    app.register_blueprint(blog.bp)
+    app.register_blueprint(blog.bp,  name="blog")
+    app.add_url_rule("/", endpoint="index")
 
     from . import about
     app.register_blueprint(about.bp)
+
     return app
