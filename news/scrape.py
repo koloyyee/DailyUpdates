@@ -40,7 +40,7 @@ class AgencyNews():
         elif self.url in "https://finviz.com":  # finviz
             headlines = parsed.find_all(class_="news-link-container")
         else:  # Reuters
-            headlines = parsed.find_all(class_="heading_5_half")
+            headlines = parsed.find_all(class_="heading__base__2T28j")
 
         titles, urls = self.getHeadlines(headlines)
 
@@ -53,10 +53,11 @@ class AgencyNews():
         titles = []
         urls = []
         for h in headlines:
-            titles.append(h.get_text())
-            if self.url == "https://edition.cnn.com":
-                urls.append(h.a.get("href"))
-            urls.append(h.get("href"))
+            if h.get("href") is not None:
+                titles.append(h.get_text())
+                if self.url == "https://edition.cnn.com":
+                    urls.append(h.a.get("href"))
+                urls.append(h.get("href"))
         return titles, urls
 
 
@@ -195,7 +196,7 @@ class Reuters():
         r = http.request("GET", self.REUTERS, headers=headers)
         parsed = BeautifulSoup(r.data, "lxml")
 
-        headlines = parsed.find_all(class_="heading_5_half")
+        headlines = parsed.find_all(class_="heading__base__2T28j")
         titles, urls = self.reutersHeadlines(headlines=headlines)
 
         with app.app_context():
@@ -204,9 +205,11 @@ class Reuters():
     def reutersHeadlines(self, headlines: list[str]) -> Tuple[List[str], List[str]]:
         titles = []
         urls = []
-        for h in headlines:
+        for h in headlines[1:-9]:
             titles.append(h.get_text())
             urls.append(h.get("href"))
+
+        print(f"Reuters: {titles}, {urls}")
         return (titles, urls)
 
 
@@ -244,7 +247,7 @@ def populateDB(titles: List[str], urls: List[str], agencyURL: str) -> None:
                     link[0], link[1], id,)
             )
             db.commit()
-    elif "cnn" in agencyURL:
+    elif "cnn" in agencyURL or "reuters" in agencyURL:
         for link in zip(titles, urls):
             # fullLink is the combining the new agency url with the url scrape from the site.
             fullLink = f"{agencyURL}{link[1]}"
