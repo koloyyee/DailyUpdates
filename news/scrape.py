@@ -61,6 +61,7 @@ class AgencyNews():
                 if self.url == "https://edition.cnn.com":
                     urls.append(h.a.get("href"))
                 urls.append(h.get("href"))
+        print(headlines)
         return titles, urls
 
 

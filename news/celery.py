@@ -13,7 +13,8 @@ app.conf.update(
 app.conf.beat_schedule = {
     "run_news": {
         "task": "news.task.allNews",
-        "schedule": crontab(hour=6, minute="*/6"),
+        "schedule": crontab(minute=0, hour="*/6"),
+        # "schedule": 60,
         "args": ([
             ["https://www.reuters.com", "https://www.bbc.com/news",
                 "https://edition.cnn.com", "https://finviz.com"],

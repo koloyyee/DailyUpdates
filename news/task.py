@@ -16,7 +16,7 @@ def allNews(agencyUrl: list[str], category: list[str] = None) -> None:
     :return: None, values will be inserted into the db directly.
     """
     for agency in agencyUrl:
-        print(f"fetching news from {agency} - {category}")
+        print(f"fetching news from {agency}")
         news = scrape.AgencyNews(agency)
 
         if agency == "https://finviz.com" or agency == "https://www.reuters.com":
@@ -25,4 +25,4 @@ def allNews(agencyUrl: list[str], category: list[str] = None) -> None:
             for c in category:
                 print(f"fetching {agency} - {c}")
                 news.fetchNews(c)
-        news.fetchNews()
+        # news.fetchNews()
