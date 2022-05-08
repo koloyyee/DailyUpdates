@@ -25,24 +25,26 @@ class AgencyNews():
 
         if category:
             r = http.request("GET", f"{self.url}/{category}", headers=headers)
+            print(f"{self.url}/{category}")
         elif category == None and self.url in "http://www.finviz.com":
             r = http.request("GET", f"{self.url}/news.ashx", headers=headers)
         else:
             r = http.request("GET", f"{self.url}", headers=headers)
-            feature = "lxml"
+        feature = "lxml"
 
-        feature = "html.parser"
+        # feature = "html.parser"
 
         parsed = BeautifulSoup(r.data, feature)
 
         if self.url == "https://www.bbc.com/news":  # BBC
             headlines = parsed.find_all(class_="gs-c-promo-heading")[1:-12]
         elif self.url in "https://edition.cnn.com":  # CNN
-            headlines = parsed.find_all(class_="cd__headline")
+            headlines = parsed.find_all("h3", class_="cd__headline")
         elif self.url in "https://finviz.com":  # finviz
             headlines = parsed.find_all(class_="nn-tab-link")
         else:  # Reuters
             headlines = parsed.find_all(class_="heading__base__2T28j")
+        print(len(headlines))
 
         titles, urls = self.getHeadlines(headlines)
 

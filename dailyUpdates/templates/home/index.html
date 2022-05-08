@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %} home {% endblock title %} {% block
+header %}
+<h2>welcome.</h2>
+{% endblock header %} {% block content %}
+<div id="intro">
+  <img id="profile_pic" src= "{{ url_for("static", filename="Profile Pic.JPG" )
+  }}" alt="David's Profile Pic" />
+  <div id="short_intro">
+    my name is <span>David Ko</span> .<br />
+    I am a Chef by day, <br />
+    Python and Javascript developer by night.<br />
+    I love Cooking, Software Development and Data. <br />
+  </div>
+</div>
+
+<div class="portfolio"></div>
+{% endblock content %}

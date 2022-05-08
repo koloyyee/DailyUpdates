@@ -46,6 +46,10 @@ def create_app(test_config=None):
     # login_manager = LoginManager()
     # login_manager.init_app(app)
 
+    from . import home
+    app.register_blueprint(home.bp, name="home")
+    app.add_url_rule("/", endpoint="index")
+
     from . import auth
     app.register_blueprint(auth.bp)
 
@@ -56,8 +60,10 @@ def create_app(test_config=None):
     app.register_blueprint(agency.bp)
 
     from . import blog
-    app.register_blueprint(blog.bp,  name="blog")
-    app.add_url_rule("/", endpoint="index")
+    app.register_blueprint(blog.bp)
+
+    from . import portfolio
+    app.register_blueprint(portfolio.bp)
 
     from . import about
     app.register_blueprint(about.bp)

@@ -1,6 +1,3 @@
-import json
-import os
-
 from flask import (Blueprint, Flask, flash, g, jsonify, redirect,
                    render_template)
 from flask.helpers import url_for

@@ -7,7 +7,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <a href = " {{ url_for("dailyNews.mySubscriptions") }} "><title>{% block title %}{% endblock%} read, write, cook</title> </a>
+  
 
   <br/>
   <br/>
@@ -35,26 +35,26 @@
       
     <section class="content">
       <header>{% block header %} {% endblock %}</header>
-      <div class="newsSub"></div>
       {% for m in get_flashed_messages() %}
       <div class="flash">{{ m }}</div>
       {% endfor %} {% block content %} {% endblock %}
     </section>
-   
+    <title> David Ko |  {% block title %}{% endblock title %} </title>
 
     
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg fixed-bottom navbar-light bg-light">
       <div class="container-fluid">
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" > 
-          <div class="navbar-nav">
+        </button> -->
+        <div  > 
+          <div class="nav">
+              <a class="nav-link" id ="home" aria-current="page" href="{{ url_for("home.welcome") }}">home</a>
+            <a class="nav-link" id="hi" href="{{ url_for("about.hi") }}">about me </a>
               <a class="nav-link" id ="news" aria-current="page" href="{{ url_for("dailyNews.mySubscriptions") }}">news</a>
               <a class="nav-link" id="blog" href="{{ url_for("blog.BlogPostsTitle") }}" >blog</a>
-              <a class="nav-link" id="hi" href="{{ url_for("about.hi") }}">hi</a>
               <a class="nav-link social" href ="https://www.github.com/koloyyee" target="_blank"><img src= "{{ url_for("static", filename="GitHub-Mark-64px.png" ) }}" alt="my repo" width="24" height="24"> </a>
               <a class="nav-link social" href ="https://www.linkedin.com/in/ko-loy-yee/" target="_blank"><img src= "{{ url_for("static", filename="LI-In-Bug.png" ) }}" alt="my linkedin" width="28" height="24"></a>
               

@@ -1,0 +1,2 @@
+[] - remove hamburger icon
+[] - profile

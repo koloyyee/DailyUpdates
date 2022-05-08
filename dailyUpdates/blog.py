@@ -17,8 +17,7 @@ md = Markdown(extras={"fenced-code-blocks": None})
 base_dir = pathlib.Path(__file__).absolute().parent
 postsDir = base_dir/"posts"
 
-bp = Blueprint("blog", __name__)
-# bp = Blueprint("blog", __name__, url_prefix="/blog")
+bp = Blueprint("blog", __name__, url_prefix="/blog")
 
 
 # @bp.route("/", methods=["GET"])
