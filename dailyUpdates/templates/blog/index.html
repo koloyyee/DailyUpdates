@@ -6,7 +6,7 @@
 {% block content %}
 
 {% if g.user %}
-    <a href={{ "/create"}}> new post </a>
+    <a href={{ "/blog/create"}}> new post </a>
 {% endif %}
 
 {% for post in posts %}
