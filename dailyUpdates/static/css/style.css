@@ -3,16 +3,14 @@ body{
     font-size: 1rem;
     margin:10vw;
     color:dimgray;
-
+    padding-bottom: 100px;
 }
+
+
 
 title{
    display: none;
 }
-
-/* .content{
-    width: 80%;
-} */
 
 a{
     text-decoration: none; 
@@ -101,8 +99,13 @@ a.social:hover {
 .navbar {
     padding-right: 8vw;
     padding-left: 8vw;
+    display:block;
+  
 }
+.navbar-scroll{
+    display: none;
 
+}
 .switch {
     width: 60px;
     height: 35px;

@@ -11,7 +11,7 @@ class NewsModel():
     def allNews(self):
         db = getDB()
         news = db.execute(
-            "SELECT headline, n.url, a.agency from news n JOIN agency a ON n.agency_id = a.id ORDER BY n.id DESC"
+            "SELECT headline, n.url, a.agency from news n JOIN agency a ON n.agency_id = a.id ORDER BY created DESC"
         ).fetchall()
         db.commit()
         return news
@@ -28,7 +28,7 @@ class NewsModel():
     def allNewsByAgency(self, agency):
         db = getDB()
         news = db.execute(
-            " SELECT headline, n.url, a.agency from news n JOIN agency a WHERE a.agency = ? and n.agency_id = a.id order by created desc limit 100", (
+            " SELECT headline, n.url, a.agency from news n JOIN agency a WHERE a.agency = ? and n.agency_id = a.id order by created desc limit 20", (
                 agency,)
         ).fetchall()
         if news is None:

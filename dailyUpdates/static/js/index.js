@@ -20,28 +20,13 @@ const editor = async () => {
 
 editor();
 
-// toggle button
+// hide navbar
 
-// const checkbox = document.querySelector("#checkbox");
-// checkbox.attributes.checked = false;
-
-// const btn = document.querySelector(".round");
-// const fullStory = document.querySelector("#fullStory");
-// fullStory.style.display = "none";
-
-// const toggleMe = document.querySelector(".toggle");
-
-// btn.addEventListener("click", (e) => {
-//   if (
-//     checkbox.attributes.checked == false &&
-//     fullStory.style.display === "none"
-//   ) {
-//     fullStory.style.display = "block";
-//     toggleMe.style.display = "none";
-//     checkbox.attributes.checked = true;
-//   } else {
-//     fullStory.style.display = "none";
-//     toggleMe.style.display = "block";
-//     checkbox.attributes.checked = false;
-//   }
-// });
+document.addEventListener("scroll", () => {
+  const navbar = document.querySelector(".navbar");
+  if (document.scrollingElement.scrollTop > 100) {
+    navbar.classList.add("navbar-scroll");
+  } else {
+    navbar.classList.remove("navbar-scroll");
+  }
+});
