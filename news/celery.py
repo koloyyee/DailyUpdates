@@ -13,14 +13,12 @@ app.conf.update(
 app.conf.beat_schedule = {
     "run_news": {
         "task": "news.task.allNews",
-        # "schedule": 60,
-        "schedule": crontab(minute=0, hour="*/9"),
+        "schedule": 60,
+        # "schedule": crontab(minute=0, hour="*/3"),
         "args": ([
-            ["https://www.reuters.com",
-                "https://www.bbc.com/news",
-                "https://finviz.com",
+            [
                 "https://edition.cnn.com"],
-            ["business", "world"]
+            ["business"]
         ])
     }
 }
@@ -29,4 +27,6 @@ app.conf.timezone = 'Asia/Hong_Kong'
 if __name__ == "__main__":
     app.start()
 
-#
+# "https://www.reuters.com",
+#              "https://www.bbc.com/news",
+#              "https://finviz.com",

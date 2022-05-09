@@ -11,7 +11,7 @@ class NewsModel():
     def allNews(self):
         db = getDB()
         news = db.execute(
-            "SELECT headline, n.url, a.agency from news n JOIN agency a ON n.agency_id = a.id ORDER BY created DESC"
+            "SELECT headline, n.url, a.agency from news n JOIN agency a ON n.agency_id = a.id ORDER BY n.id DESC"
         ).fetchall()
         db.commit()
         return news

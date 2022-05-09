@@ -11,7 +11,6 @@ from bs4 import BeautifulSoup
 from dailyUpdates import create_app
 from dailyUpdates.db import getDB, initDB
 from flask import abort
-from pydantic import UrlUserInfoError
 
 
 class AgencyNews():
@@ -25,7 +24,7 @@ class AgencyNews():
 
         if category:
             r = http.request("GET", f"{self.url}/{category}", headers=headers)
-            print(f"{self.url}/{category}")
+            # print(f"{self.url}/{category}")
         elif category == None and self.url in "http://www.finviz.com":
             r = http.request("GET", f"{self.url}/news.ashx", headers=headers)
         else:
@@ -58,12 +57,16 @@ class AgencyNews():
         urls = []
 
         for h in headlines:
-            if h.get("href") is not None:
-                titles.append(h.get_text())
-                if self.url == "https://edition.cnn.com":
+            if self.url == "https://edition.cnn.com" and h.a.get("href") is not None:
+                if "fool.com" in h.a.get("href") or "lending" in h.a.get("href") or "bleacherreport.com" in h.a.get("href"):
+                    pass
+                else:
+                    titles.append(h.get_text())
                     urls.append(h.a.get("href"))
+            elif h.get("href") is not None:
+                titles.append(h.get_text())
                 urls.append(h.get("href"))
-        print(headlines)
+        print(urls)
         return titles, urls
 
 
@@ -228,7 +231,7 @@ def getAgency(url: str) -> int:
 
     """
     db = getDB()
-    print(os.path.dirname(os.path.abspath(__file__)))
+    # print(os.path.dirname(os.path.abspath(__file__)))
     id = db.execute(
         "SELECT id, agency, url FROM agency WHERE url = ? ", (url,)
     ).fetchone()
