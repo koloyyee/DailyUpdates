@@ -24,9 +24,23 @@ editor();
 
 document.addEventListener("scroll", () => {
   const navbar = document.querySelector(".navbar");
-  if (document.scrollingElement.scrollTop > 100) {
+  if (
+    document.scrollingElement.scrollTop > 100 &&
+    document.scrollingElement.scrollTopMax -
+      document.scrollingElement.scrollTop >
+      100
+  ) {
+    console.log(
+      document.scrollingElement.scrollTopMax -
+        document.scrollingElement.scrollTop
+    );
     navbar.classList.add("navbar-scroll");
-  } else {
+  } else if (
+    document.scrollingElement.scrollTopMax -
+      document.scrollingElement.scrollTop ===
+      0 ||
+    document.scrollingElement.scrollTop == 0
+  ) {
     navbar.classList.remove("navbar-scroll");
   }
 });
