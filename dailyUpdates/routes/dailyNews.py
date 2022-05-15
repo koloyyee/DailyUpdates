@@ -2,8 +2,8 @@ from flask import (Blueprint, Flask, flash, g, jsonify, redirect,
                    render_template)
 from flask.helpers import url_for
 
-from dailyUpdates.Models.agencies import AgencyModel
-from dailyUpdates.Models.news import NewsModel
+from ..models.agencies import AgencyModel
+from ..models.news import NewsModel
 
 # from scrapeNews import BBCnews, CNNnews, FinvizNews
 

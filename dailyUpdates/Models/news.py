@@ -1,8 +1,9 @@
 """
 Query for news table.
 """
-from dailyUpdates.db import getDB
 from flask import abort
+
+from ..database.db import getDB
 
 
 class NewsModel():

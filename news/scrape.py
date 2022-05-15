@@ -9,8 +9,9 @@ from typing import List, Tuple
 import urllib3
 from bs4 import BeautifulSoup
 from dailyUpdates import create_app
-from dailyUpdates.db import getDB, initDB
 from flask import abort
+
+from ..dailyUpdates.database.db import getDB, initDB
 
 
 class AgencyNews():

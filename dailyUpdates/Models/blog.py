@@ -5,9 +5,10 @@ Query for blog table
 
 from typing import List
 
-from dailyUpdates.auth import login_user
-from dailyUpdates.db import getDB
 from flask import flash
+
+from ..database.db import getDB
+from .auth import User
 
 
 class BlogModel():

@@ -9,8 +9,8 @@ from markdown2 import Markdown, markdown, markdown_path
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 
-from dailyUpdates.auth import loginRequired
-from dailyUpdates.Models.blog import BlogModel
+from ..models.blog import BlogModel
+from .auth import loginRequired
 
 md = Markdown(extras={"fenced-code-blocks": None})
 

@@ -9,9 +9,8 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired
 
-from dailyUpdates.db import getDB
-
-from .Models import auth
+from ..database.db import getDB
+from ..models import auth
 
 
 class RegisterForm(FlaskForm):

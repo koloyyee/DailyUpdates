@@ -1,8 +1,10 @@
+from doctest import DocTestFailure
+
 from flask import (Blueprint, abort, flash, redirect, render_template, request,
                    url_for)
 
-from dailyUpdates.db import getDB
-from dailyUpdates.Models.agencies import AgencyModel
+from ..database.db import getDB
+from ..models.agencies import AgencyModel
 
 bp = Blueprint("agency", __name__, url_prefix="/agency")
 

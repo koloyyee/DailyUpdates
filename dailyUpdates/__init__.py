@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from flask import Flask, current_app
 from flask_ckeditor import CKEditor
 
-from . import db
+from .database import db
 
 load_dotenv()
 
@@ -46,26 +46,26 @@ def create_app(test_config=None):
     # login_manager = LoginManager()
     # login_manager.init_app(app)
 
-    from . import home
+    from .routes import home
     app.register_blueprint(home.bp, name="home")
     app.add_url_rule("/", endpoint="index")
 
-    from . import auth
+    from .routes import auth
     app.register_blueprint(auth.bp)
 
-    from . import dailyNews
+    from .routes import dailyNews
     app.register_blueprint(dailyNews.bp)
 
-    from . import agency
+    from .routes import agency
     app.register_blueprint(agency.bp)
 
-    from . import blog
+    from .routes import blog
     app.register_blueprint(blog.bp)
 
-    from . import portfolio
+    from .routes import portfolio
     app.register_blueprint(portfolio.bp)
 
-    from . import about
+    from .routes import about
     app.register_blueprint(about.bp)
 
     return app

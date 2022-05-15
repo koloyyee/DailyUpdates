@@ -16,7 +16,9 @@ app.conf.beat_schedule = {
         # "schedule": 60,
         "schedule": crontab(minute=0, hour="*/3"),
         "args": ([
-            [
+            ["https://www.reuters.com",
+             "https://www.bbc.com/news",
+             "https://finviz.com",
                 "https://edition.cnn.com"],
             ["business"]
         ])
@@ -27,6 +29,4 @@ app.conf.timezone = 'Asia/Hong_Kong'
 if __name__ == "__main__":
     app.start()
 
-# "https://www.reuters.com",
-#              "https://www.bbc.com/news",
-#              "https://finviz.com",
+#

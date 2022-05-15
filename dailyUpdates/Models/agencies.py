@@ -3,8 +3,9 @@ Query for agencies table.
 """
 from typing import List
 
-from dailyUpdates.db import getDB
 from flask import abort
+
+from ..database.db import getDB
 
 
 class AgencyModel():

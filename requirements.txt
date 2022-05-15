@@ -13,7 +13,6 @@ click-plugins==1.1.1
 click-repl==0.2.0
 cymem==2.0.6
 -e git+https://github.com/koloyyee/DailyUpdates.git@8b2f534528847f1833131d492f5a3049f0e325ec#egg=dailyUpdates
-en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0-py3-none-any.whl
 Flask==2.0.2
 Flask-CKEditor==0.4.6
 Flask-Login==0.6.0
