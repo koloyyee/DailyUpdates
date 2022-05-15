@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %} {{ ckeditor.load() }}
 
-<form id="editorDiv" name="ckeditor" method="POST" action="/create">
+<form id="editorDiv" name="ckeditor" method="POST" action="/blog/create">
   <div>
     <p>Title: <br />{{ form.title }}</p>
     <p>Content: <br />{{ form.content }}</p>
