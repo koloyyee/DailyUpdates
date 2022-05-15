@@ -11,7 +11,7 @@ from flask import abort, redirect, session, url_for
 from flask_login import UserMixin
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from ..database.db import getDB
+from ..db import getDB
 
 
 class User():

@@ -7,7 +7,7 @@ from typing import List
 
 from flask import flash
 
-from ..database.db import getDB
+from ..db import getDB
 from .auth import User
 
 

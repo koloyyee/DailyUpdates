@@ -9,7 +9,7 @@ from flask_wtf import FlaskForm
 from wtforms import BooleanField, PasswordField, StringField, SubmitField
 from wtforms.validators import DataRequired
 
-from ..database.db import getDB
+from ..db import getDB
 from ..models import auth
 
 

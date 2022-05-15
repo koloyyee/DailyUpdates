@@ -5,7 +5,7 @@ from typing import List
 
 from flask import abort
 
-from ..database.db import getDB
+from ..db import getDB
 
 
 class AgencyModel():

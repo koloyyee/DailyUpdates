@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from flask import Flask, current_app
 from flask_ckeditor import CKEditor
 
-from .database import db
+from . import db
 
 load_dotenv()
 

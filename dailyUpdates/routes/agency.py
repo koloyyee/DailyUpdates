@@ -3,7 +3,7 @@ from doctest import DocTestFailure
 from flask import (Blueprint, abort, flash, redirect, render_template, request,
                    url_for)
 
-from ..database.db import getDB
+from ..db import getDB
 from ..models.agencies import AgencyModel
 
 bp = Blueprint("agency", __name__, url_prefix="/agency")

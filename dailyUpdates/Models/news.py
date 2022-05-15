@@ -3,7 +3,7 @@ Query for news table.
 """
 from flask import abort
 
-from ..database.db import getDB
+from ..db import getDB
 
 
 class NewsModel():
