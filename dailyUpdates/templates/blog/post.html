@@ -1,8 +1,11 @@
 
 
 {% extends 'base.html' %}
-
+{% block header %}<meta name="description" content="{{post.title.capitalize() }}">
+<meta name="author" content="David Ko">
+<meta name="keywords" content="self-taught, javascript, python, html, php, web development">{% endblock header %}
 {% block content %}
+
 
 <h1>{{ post.title.capitalize() }} </h1>
 
