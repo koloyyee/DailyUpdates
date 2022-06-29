@@ -34,18 +34,19 @@ class AgencyNews():
         # feature = "html.parser"
 
         parsed = BeautifulSoup(r.data, feature)
-
+        headlines = ""
         if self.url == "https://www.bbc.com/news":  # BBC
-            headlines = parsed.find_all(class_="gs-c-promo-heading")[1:-12]
+            headlines = parsed.find_all(class_="nw-o-link-split__anchor")[1:-3]
         elif self.url in "https://edition.cnn.com":  # CNN
             headlines = parsed.find_all("h3", class_="cd__headline")
         elif self.url in "https://finviz.com":  # finviz
             headlines = parsed.find_all(class_="nn-tab-link")
-        else:  # Reuters
-            headlines = parsed.find_all(class_="heading__base__2T28j")
-        print(len(headlines))
-
+        elif self.url in "https://www.reuters.com":  # Reuters
+            headlines = parsed.findAll("a", class_="heading_5_half")
+        print(headlines)
         titles, urls = self.getHeadlines(headlines)
+
+        print(titles, urls)
 
         app = create_app()
 
@@ -57,6 +58,7 @@ class AgencyNews():
         urls = []
 
         for h in headlines:
+            print(h.get_text())
             if self.url == "https://edition.cnn.com" and h.a.get("href") is not None:
                 if "fool.com" in h.a.get("href") or "lending" in h.a.get("href") or "bleacherreport.com" in h.a.get("href"):
                     pass
