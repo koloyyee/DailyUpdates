@@ -13,8 +13,8 @@ app.conf.update(
 app.conf.beat_schedule = {
     "run_news": {
         "task": "news.task.allNews",
-        # "schedule": 30,
-        "schedule": crontab(minute=0, hour="*/3"),
+        "schedule": 30,
+        # "schedule": crontab(minute=0, hour="*/3"),
         "args": ([
             ["https://www.reuters.com",
              "https://www.bbc.com/news",

@@ -3,6 +3,7 @@ Scraping BBC, CNN, and Finviz business news
 
 """
 import os
+import time
 from datetime import date
 from typing import List, Tuple
 
@@ -42,16 +43,18 @@ class AgencyNews():
         elif self.url in "https://finviz.com":  # finviz
             headlines = parsed.find_all(class_="nn-tab-link")
         elif self.url in "https://www.reuters.com":  # Reuters
-            headlines = parsed.findAll("a", class_="heading_5_half")
+            time.sleep(5)
+            headlines = parsed.findAll(
+                "a", class_="heading__base__2T28j")
         print(headlines)
         titles, urls = self.getHeadlines(headlines)
 
         print(titles, urls)
 
-        app = create_app()
+        # app = create_app()
 
-        with app.app_context():
-            populateDB(titles, urls, self.url)
+        # with app.app_context():
+        #     populateDB(titles, urls, self.url)
 
     def getHeadlines(self, headlines: list[str]):
         titles = []

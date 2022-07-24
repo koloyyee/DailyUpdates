@@ -25,4 +25,3 @@ def allNews(agencyUrl: list[str], category: list[str] = None) -> None:
             for c in category:
                 print(f"fetching {agency} - {c}")
                 news.fetchNews(c)
-        # news.fetchNews()
