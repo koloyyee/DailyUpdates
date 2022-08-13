@@ -40,7 +40,7 @@ span {
 .close-button {
     font-size: 3rem;
     padding-right: 1rem;
-
+    padding-top: 0;
     cursor: pointer;
 
 }
@@ -62,7 +62,7 @@ nav {
 }
 
 ul li {
-    padding: 1rem 0;
+    padding: 0;
 
 }
 

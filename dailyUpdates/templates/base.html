@@ -38,13 +38,13 @@
     <header>
       <nav class="nav top-menu">
 
-              <ul class="container-flex"> 
-                  <li><a class="nav-link" id ="home" aria-current="page" href="{{ url_for("home.welcome") }}">home</a></li>
-                  <li><a class="nav-link" id="hi" href="{{ url_for("about.hi") }}">about me </a></li>
-                <li> <a class="nav-link" id ="news" aria-current="page" href="{{ url_for("dailyNews.mySubscriptions") }}">news</a></li>
-                <li> <a class="nav-link" id="blog" target="_blank" href="http://blog.loyyee.co" >blog</a></li>
-                <li><a class="close-button">&times;</a></li>
-              </ul>
+        <ul class="container-flex"> 
+          <li><a class="nav-link" id ="home" aria-current="page" href="{{ url_for("home.welcome") }}">home</a></li>
+          <li><a class="nav-link" id="hi" href="{{ url_for("about.hi") }}">about me </a></li>
+          <li> <a class="nav-link" id ="news" aria-current="page" href="{{ url_for("dailyNews.mySubscriptions") }}">news</a></li>
+          <li> <a class="nav-link" id="blog" target="_blank" href="http://blog.loyyee.co" >blog</a></li>
+          <li><a class="close-button">&times;</a></li>
+        </ul>
            <!--{% if not g.user %}
             
             <a href={{ url_for("auth.login")}} > login </a>
