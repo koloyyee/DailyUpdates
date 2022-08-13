@@ -3,9 +3,10 @@
 {% block title %} daily news {% endblock title %}
 
 {% block header %}<h4>daily news.</h4>{% endblock %}
-
 {% block content %}
+<div class="news-headlines">
 {% for a in agencies %}
-<p><a class = "action" href = {{ url_for("dailyNews.agencyNews", agency = a["agency"]) }}>  {{ a["agency"] }} daily news </a> </p>
+<a class = "action" href = {{ url_for("dailyNews.agencyNews", agency = a["agency"]) }}> <p> {{ a["agency"] }}  daily news</p> </a>
 {% endfor %} 
+</div>
 {% endblock %}

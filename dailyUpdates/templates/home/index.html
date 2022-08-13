@@ -1,17 +1,43 @@
 {% extends 'base.html' %} {% block title %} home {% endblock title %} {% block
-header %}
-<h2>welcome.</h2>
-{% endblock header %} {% block content %}
-<div id="intro">
-  <img id="profile_pic" src= "{{ url_for("static", filename="Profile Pic.JPG" )
-  }}" alt="David's Profile Pic" />
-  <div id="short_intro">
-    my name is <span>David Ko</span> .<br />
+header %} {% endblock header %} {% block content %}
+<div class="bio container-flex">
+  <div class="intro col-2">
+    <h2>welcome.</h2>
+    my name is <span>David Ko</span>.<br />
     I am a Chef by day, <br />
-    Python and Javascript developer by night.<br />
+    <br />
+
+    Web developer by night.<br /><br />
     I love Cooking, Software Development and Data. <br />
   </div>
+  <img class="profile_pic" class="col-2" src= "{{ url_for("static",
+  filename="mugshot.png" ) }}" alt="David's Profile Pic" />
 </div>
 
-<div class="portfolio"></div>
-{% endblock content %}
+{% endblock content %} {% block about_me %}
+<h2>Quick story </h2>
+<div class="quick_story">
+  <p>
+    I am a frontend developer from Hong Kong with domain knowledge in Food and
+    Beverage industry and kitchen operation.<br />
+    I am a quick learner, loves solving problems and having an analytical
+    mind.
+      <br>
+    </p>
+    
+  </div>
+  <a href="{{ url_for("about.hi") }}">read more</a>
+{% endblock about_me %} {% block extra %} 
+<h2>Projects</h2>
+{% for portfolio in portfolios %}
+
+<div class="portfolio cards">
+  <a href="{{portfolio.url}}" target="_blank">
+    <img src="{{url_for("static", filename=portfolio.icon) }}" alt="{{
+    portfolio.credit}}" class="project_icon" />
+
+    <h3 class="project_title">{{ portfolio.name}}</h3>
+  </a>
+</div>
+
+{% endfor %} {% endblock extra %}

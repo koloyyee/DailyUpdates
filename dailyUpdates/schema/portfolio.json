@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Daily News",
+        "url": "https://loyyee.co/news",
+        "icon": "newspaper.png",
+        "credit": "Newspaper icons created by smalllikeart - Flaticon",
+        "background": "Each morning I would be going to different websites to read the international business news and updates of the stock market, but it is such a waste of time going from one site to another and why not just created a project where I can read all the news at once?",
+        "solution": "In order to get the news that I want, I need to use a BeautifulSoup with urllib3 to scrap the title and the link of the news. Why urllib3 instead of request, you may ask, it is because of speed, and urllib3 is the backbone of requests. I also need this scraping to be scheduled, so I have used Celery and RabbitMQ.",
+        "challenges": "There are many hurdles to get the right information, and whenever the sites update the website I will need to find the class again and check if the scrapping is successful.",
+        "techStack": "Python, BeautifulSoup, urllib3, Celery, RabbitMQ"
+    },
+    {
+        "name": "Weather App",
+        "url": "https://dainty-valkyrie-b559e0.netlify.app/",
+        "icon": "weather.png",
+        "credit": "Weather icons created by GOWI - Flaticon",
+        "background": "This is project where I focus on learning fetchAPI and FormData. For a weather app, besides the weather information why not photo of the current weather, and how about user be able to look for their desired city? Vanilla sky weather app is born!",
+        "solution": "I am using calling Unsplash for photos and rapidAPI for weather information ",
+        "challenges": "I have lots small struggles with presenting the information in a clean way.",
+        "techStack": "HTML, CSS, JS"
+    },
+    {
+        "name": "Warren's letter to shareholders.",
+        "url": "https://github.com/koloyyee/brk_annual_letter",
+        "icon": "letter.png",
+        "credit": "Letter icons created by Freepik - Flaticon",
+        "background": "I am a fan of Warren Buffett! I always found his letter are very inspiring, but I am a bit lazy to download it one by one, so I have python program to go through all of them in one go!",
+        "solution": "By using BeautifulSoup and PDFkit to process the files.",
+        "challenges": "The dates and years of the file created some challenges.",
+        "techStack": "Python, BeautifulSoup, urllib3, PdfKit"
+    }
+]

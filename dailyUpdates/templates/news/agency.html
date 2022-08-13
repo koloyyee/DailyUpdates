@@ -1,10 +1,12 @@
-{% extends "base.html" %} {% block header %}
-<h1 class="agencyTitle">daily news from {{ allNews[0]["agency"].upper() }}</h1>
+{% extends "base.html" %}
+{% block header %}
+<h1 class="agency_title">daily news from {{ allNews[0]["agency"].upper() }}</h1>
 
 <br/>
 {% endblock %}
 {% block title %} news from {{ allNews[0]["agency"].upper() }} {% endblock title %}
 {% block content %}
+<div class="news-headlines">
 
 {% if allNews %}
 {% for news in allNews %} 
@@ -15,4 +17,6 @@
 {% endif %}
 
 
+
+</div>
 {% endblock %}

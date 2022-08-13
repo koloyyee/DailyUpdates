@@ -20,27 +20,28 @@ const editor = async () => {
 
 editor();
 
-// hide navbar
+// open menu drawer
 
-document.addEventListener("scroll", () => {
-  const navbar = document.querySelector(".navbar");
-  if (
-    document.scrollingElement.scrollTop > 100 &&
-    document.scrollingElement.scrollTopMax -
-      document.scrollingElement.scrollTop >
-      100
-  ) {
-    console.log(
-      document.scrollingElement.scrollTopMax -
-        document.scrollingElement.scrollTop
-    );
-    navbar.classList.add("navbar-scroll");
-  } else if (
-    document.scrollingElement.scrollTopMax -
-      document.scrollingElement.scrollTop ===
-      0 ||
-    document.scrollingElement.scrollTop == 0
-  ) {
-    navbar.classList.remove("navbar-scroll");
-  }
+function openDrawer() {
+  const topMenu = document.querySelector(".top-menu");
+  topMenu.style.height = "100%";
+  topMenu.style.top = "0%";
+
+  document.querySelector("body").style.overflow = "hidden";
+}
+document.querySelector(".drawer-button").addEventListener("click", () => {
+  openDrawer();
+});
+
+// close the drawer
+function closeDrawer() {
+  const topMenu = document.querySelector(".top-menu");
+  topMenu.style.height = "0%";
+  topMenu.style.top = "-100%";
+  topMenu.style.width = "100%";
+
+  document.querySelector("body").style.overflow = "";
+}
+document.querySelector(".close-button").addEventListener("click", () => {
+  closeDrawer();
 });

@@ -1,23 +1,18 @@
 {% extends "base.html" %}
 {% block title %} about {% endblock title %}
 {% block content %}
-<img id="profile_pic" src= "{{
-  url_for("static", filename="Profile Pic.JPG" ) }}" alt="David's Profile Pic"
-  />
-<div id="about">
+<div class="about">
+  <img class="profile_pic about_me_pic" src= "{{
+    url_for("static", filename="Profile Pic.JPG" ) }}" alt="David's Profile Pic"
+    />
 
     
     <h2> my story</h2> 
     <h4 class ="journey" > from cooking to software development</h4>
     <br/>
 </div>
-<!--<label class = "switch ">
-  <input id="checkbox" type="checkbox">
-  <span class="slider round"></span>
-</label>
-div class="toggle">toggle to read more about me </div>  -->
 
-<div id="fullStory" class="fullStory">
+<div class="full_story">
 
   <p>
     I have a bachelor's degree in Journalism and Communication, and during my college I had worked at a radio station, but news just wasn't right for me, because food was! I became a chef soon after college working a Michelin starred restaurants both in Hong Kong and Sydney, but I always had a secret love for technology and science even though I didn't realize it. I remember I have saved months of my part-time salary to get the iPhone 3G, using the white MacBook through my college days, and purchasing the first generation MacBook Air, I have always drawn to the apps without knowing I could create one too.
