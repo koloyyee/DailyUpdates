@@ -36,6 +36,31 @@ span {
 
 }
 
+.button {
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #3d89d6;
+    background-color: none;
+
+}
+
+.button {
+    padding: 1rem 1.5rem;
+}
+
+
+
+.button:hover,
+.cv:hover {
+    box-shadow: 5px 10px 0 #e1e1e3;
+    background-color: #3d89d6;
+    color: #fff;
+}
+
 .drawer-button,
 .close-button {
     font-size: 3rem;
@@ -284,5 +309,62 @@ hr {
     .news-headlines>a:focus {
         color: #3d89d6;
     }
+
+}
+
+/* contact form  */
+.contact {
+    flex-direction: column;
+}
+
+.contact a {
+    text-decoration: none;
+}
+
+.contact_form {
+    display: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+form input,
+textarea {
+    border-radius: .3rem;
+    margin: .5rem 0;
+    border: 1px solid #e1e1e3;
+    padding: 1rem;
+    font-size: 1rem;
+
+}
+
+@media (min-width: 780px) {
+    .contact {
+        width: 80%;
+    }
+
+}
+
+
+/* footer */
+footer {
+    width: 100%;
+    justify-content: center;
+    box-shadow: 0 -8px 20px #e1e1e3;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0;
+    margin-top: 3rem;
+    line-height: 0;
+}
+
+.social {
+    margin: 0 2rem;
+    padding: .5rem 2rem;
 
 }
